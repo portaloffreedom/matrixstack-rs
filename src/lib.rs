@@ -53,4 +53,6 @@ impl<T: BaseFloat + Float> MatrixStack<T> {
   }
 
   pub fn get_matrix(& self) -> Matrix4<T> { self.current }
+
+  pub fn origin(& self) -> Point3<T> { Point3::from_vec(self.current.w.truncate()) }
 }
