@@ -1,16 +1,15 @@
 extern crate cgmath;
-extern crate num as rust_num;
+extern crate num_traits;
 
 use std::collections::VecDeque;
 use cgmath::*;
-use self::rust_num::Float;
 
-pub struct MatrixStack<T: BaseFloat + Float> {
+pub struct MatrixStack<T: BaseFloat + num_traits::Float> {
   current: Matrix4<T>,
   stack: VecDeque<Matrix4<T>>,
 }
 
-impl<T: BaseFloat + Float> MatrixStack<T> {
+impl<T: BaseFloat + num_traits::Float> MatrixStack<T> {
   pub fn new() -> MatrixStack<T> {
     MatrixStack {
       current: Matrix4::identity(),
@@ -40,7 +39,7 @@ impl<T: BaseFloat + Float> MatrixStack<T> {
     return self.current;
   }
 
-  pub fn transform_vector(& self, target: Vector3<T>) -> Vector3<T> { (self.current * target.extend(T::zero())).truncate() }
+  pub fn transform_vector(& self, target: Vector3<T>) -> Vector3<T> { (self.current * target.extend(<T as cgmath::Zero>::zero())).truncate() }
 
   pub fn transform_point(& self, target: Point3<T>) -> Point3<T> { Point3::from_homogeneous(self.current * target.to_homogeneous()) }
 
@@ -48,7 +47,7 @@ impl<T: BaseFloat + Float> MatrixStack<T> {
   pub fn transform_point_no_translate(& self, target: Point3<T>) -> Point3<T> {
     let mut vec_version = target.to_homogeneous();
     // Set to 0.0 so that translation doesn't apply
-    vec_version.w = T::zero();
+    vec_version.w = <T as cgmath::Zero>::zero();
     Point3::from_homogeneous(self.current * vec_version)
   }
 

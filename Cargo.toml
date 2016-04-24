@@ -1,6 +1,6 @@
 [package]
 name = "matrixstack"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Mark Hintz <markinportland7@gmail.com>"]
 license = "MIT"
 description = "A simple pushdown matrix stack using cgmath matrices"
@@ -9,5 +9,5 @@ readme = "README.md"
 keywords = ["matrix", "stack", "cgmath"]
 
 [dependencies]
-cgmath = "0.8.0"
-num = "0.1"
+cgmath = "0.9.1"
+num-traits = "0.1"
