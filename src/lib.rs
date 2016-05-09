@@ -2,7 +2,8 @@ extern crate cgmath;
 extern crate num_traits;
 
 use std::collections::VecDeque;
-use cgmath::*;
+use cgmath::prelude::*;
+use cgmath::{BaseFloat, Matrix4, Matrix3, Vector3, Point3};
 
 pub struct MatrixStack<T: BaseFloat + num_traits::Float> {
   current: Matrix4<T>,
