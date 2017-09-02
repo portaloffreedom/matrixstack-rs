@@ -9,5 +9,5 @@ readme = "README.md"
 keywords = ["matrix", "stack", "cgmath"]
 
 [dependencies]
-cgmath = "^0.10.0"
+cgmath = "^0.15.0"
 num-traits = "0.1"
